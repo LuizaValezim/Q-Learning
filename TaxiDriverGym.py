@@ -4,12 +4,26 @@ import gymnasium as gym
 import numpy as np
 from QLearning import QLearning
 from numpy import loadtxt
+import matplotlib.pyplot as plt
+
 
 env = gym.make("Taxi-v3", render_mode='ansi').env
 
 # apenas execute as próximas linhas se você deseja treinar o agente novamente
-qlearn = QLearning(env, alpha=0.1, gamma=0.99, epsilon=0.7, epsilon_min=0.05, epsilon_dec=0.99, episodes=50000)
-q_table = qlearn.train('data/q-table-taxi-driver.csv', 'results/actions_taxidriver')
+
+alpha_values = [0.5, 0.3, 0.7]
+gamma_values = [0.9, 0.95, 0.05]
+epsilon_values = [0.7, 0.8, 0.9]
+
+actions_per_episode = []
+
+for a, g, e in alpha_values, gamma_values:
+    print(a,g,e)
+    qlearn = QLearning(env, alpha=a, gamma=g, epsilon=e, epsilon_min=0.05, epsilon_dec=0.99, episodes=50000)
+    q_table, action_per_episode = qlearn.train('data/q-table-taxi-driver.csv', 'results/actions_taxidriver')
+    actions_per_episode.append(action_per_episode)
+    
+qlearn.plotactions("./results/plotFile", action_per_episode)
 #q_table = loadtxt('data/q-table-taxi-driver.csv', delimiter=',')
 
 #

@@ -25,6 +25,7 @@ class QLearning:
         self.epsilon_min = epsilon_min
         self.epsilon_dec = epsilon_dec
         self.episodes = episodes
+        self.actions_per_episode = []
 
     def select_action(self, state):
         ''' 
@@ -68,14 +69,16 @@ class QLearning:
                 self.epsilon = self.epsilon * self.epsilon_dec
 
         savetxt(filename, self.q_table, delimiter=',')
-        if (plotFile is not None): self.plotactions(plotFile, actions_per_episode)
-        return self.q_table
+        #if (plotFile is not None): 
+            
+        return self.q_table, actions_per_episode
 
     def plotactions(self, plotFile, actions_per_episode):
         '''
         plotactions(): É um método que cria uma imagem com o plot da quantidade de ações executadas em cada episódio.
         '''
-        plt.plot(actions_per_episode)
+        for i in range(len(actions_per_episode)):
+            plt.plot(actions_per_episode[i])
         plt.xlabel('Episodes')
         plt.ylabel('# Actions')
         plt.title('# Actions vs Episodes')
