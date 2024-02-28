@@ -54,7 +54,6 @@ def print_frames(frames):
         sleep(.1)
         
 print_frames(frames)
-
 print("\n")
 print("Timesteps taken: {}".format(epochs))
 print("Penalties incurred: {}".format(penalties))

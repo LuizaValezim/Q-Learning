@@ -59,7 +59,6 @@ class QLearning:
 
                 rewards += reward  # acumular as recompensas recebidas durante o episódio
 
-
             actions_per_episode.append(actions)
             if i % 100 == 0:
                 sys.stdout.write("Episodes: " + str(i) +'\r')
