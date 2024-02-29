@@ -76,6 +76,24 @@ plt.tight_layout()
 plt.savefig("./results/q_table_evolution_heatmaps.jpg")
 plt.close()
 '''
+env = gym.make("Taxi-v3", render_mode='ansi').env
+
+# apenas execute as próximas linhas se você deseja treinar o agente novamente
+
+alpha_values = [0.5, 0.3, 0.7]
+gamma_values = [0.9, 0.95, 0.05]
+epsilon_values = [0.7, 0.8, 0.9]
+
+actions_per_episode = []
+
+for a, g, e in alpha_values, gamma_values:
+    print(a,g,e)
+    qlearn = QLearning(env, alpha=a, gamma=g, epsilon=e, epsilon_min=0.05, epsilon_dec=0.99, episodes=50000)
+    q_table, action_per_episode = qlearn.train('data/q-table-taxi-driver.csv', 'results/actions_taxidriver')
+    actions_per_episode.append(action_per_episode)
+    
+qlearn.plotactions("./results/plotFile", action_per_episode)
+#q_table = loadtxt('data/q-table-taxi-driver.csv', delimiter=',')
 
 
 (state, _) = env.reset()

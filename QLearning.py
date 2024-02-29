@@ -20,6 +20,7 @@ class QLearning:
         self.epsilon_min = epsilon_min
         self.epsilon_dec = epsilon_dec
         self.episodes = episodes
+        self.actions_per_episode = []
 
     def select_action(self, state):
         rv = random.uniform(0, 1)
