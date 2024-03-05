@@ -25,10 +25,10 @@ def specific_plot(qlearning, sarsa):
     plt.xlabel('Episodes')
     plt.ylabel('# Rewards')
     plt.title("Hyperparams = (alpha=0.4, gamma=0.99, epsilon=0.7)", y=0.99, fontsize=10)
-    plt.suptitle('Rewards vs Episodes | Sarsa vs Q-Learning | Taxi Driver',fontsize=12)
+    plt.suptitle('Rewards vs Episodes | Q-Learning vs Sarsa | Taxi Driver',fontsize=12)
     plt.legend(loc="best")
     plt.xlim(-5,305)
-    plt.savefig("./results/taxi-driver/sarsa-taxi-driver.jpg")     
+    plt.savefig("./results/taxi-driver/taxidriver-comparison.jpg")     
     plt.close()
 
 print("Training with QLearning")
