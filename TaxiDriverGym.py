@@ -70,7 +70,6 @@ done = False
 frames_sarsa = []
  
 while not done:
-    print("state: "+ str(state))
     action = np.argmax(sarsa_table[state])
     state, reward, done, truncated, info = env.step(action)
 

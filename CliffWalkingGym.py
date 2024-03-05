@@ -29,10 +29,12 @@ def specific_plot(qlearning, sarsa):
     plt.savefig("./results/cliff-walking/cliffwalking-comparison.jpg")     
     plt.close()
 
+print("Training with QLearning")
 qlearn = QLearning(env, alpha=0.4, gamma=0.99, epsilon=0.7, epsilon_min=0.05, epsilon_dec=0.99, episodes=10000)
 q_table, q_rewards = qlearn.train('data/q-table-cliffwalking.csv', './results/cliff-walking/cliffwalking-qlearning')
 #q_table = loadtxt('data/q-table-cliffwalking.csv', delimiter=',')
 
+print("Training with Sarsa")
 sarsa = Sarsa(env, alpha=0.4, gamma=0.99, epsilon=0.7, epsilon_min=0.05, epsilon_dec=0.99, episodes=10000)
 sarsa_table, sarsa_rewards = sarsa.train('data/sarsa-table-cliffwalking.csv', './results/cliff-walking/cliffwalking-sarsa')
 #sarsa_table = loadtxt('data/sarsa-table-cliffwalking.csv', delimiter=',')
