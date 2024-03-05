@@ -3,7 +3,7 @@ from IPython.display import clear_output
 import gym
 import numpy as np
 import matplotlib.pyplot as plt
-from QLearning import QLearning 
+from ..models.QLearning import QLearning 
 import seaborn as sns
 
 env = gym.make("Taxi-v3", render_mode='ansi').env
@@ -51,5 +51,5 @@ plt.ylabel('Rewards')
 plt.title('Rewards over Episodes with Hyperparameter Variations')
 plt.legend()
 plt.grid(True)
-plt.savefig('results/taxi_rewards_variations.jpg')
+plt.savefig('./results/taxidriver-rewards.jpg')
 plt.show()
